@@ -58,6 +58,17 @@ def has_pycifrw():
     return True
 
 
+def has_pycodcif():
+    """
+    :return: True if the pycodcif module can be imported, False otherwise.
+    """
+    try:
+        import pycodcif
+    except ImportError:
+        return False
+    return True
+
+
 def symop_string_from_symop_matrix_tr(matrix, tr=(0, 0, 0), eps=0):
     """
     Construct a CIF representation of symmetry operator plus translation.
