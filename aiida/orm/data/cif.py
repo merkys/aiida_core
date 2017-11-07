@@ -489,8 +489,10 @@ class CifData(SinglefileData):
                 raise ImportError(str(e) + '. You need to install the pycodcif package.')
             values, _, _ = parse(self.get_file_abs_path())
             self._values = {}
+            self._loops = []
             for dataname in values.keys():
                 self._values[dataname] = values[dataname]['values']
+                self._loops[dataname] = values[dataname]['loops']
         return self._values
 
     def set_values(self, values):
