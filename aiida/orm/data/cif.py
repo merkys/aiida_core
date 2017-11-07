@@ -565,7 +565,7 @@ class CifData(SinglefileData):
                             if tag in self.values[datablock].keys()]
             if correct_tags:
                 try:
-                    spacegroup_number = int(self.values[datablock][correct_tags[0]])
+                    spacegroup_number = int(self.values[datablock][correct_tags[0]][0])
                 except ValueError:
                     pass
             spacegroup_numbers.append(spacegroup_number)
