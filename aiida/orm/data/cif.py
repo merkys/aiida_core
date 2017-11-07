@@ -507,6 +507,11 @@ class CifData(SinglefileData):
     def values(self, values):
         self.set_values(values)
 
+    @property
+    def loops(self):
+        values = self.values # Ensuring that the CIF file is parsed
+        return self._loops
+
     def __init__(self, **kwargs):
         """
         Initialises an instance of CifData.
