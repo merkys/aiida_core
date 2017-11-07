@@ -232,7 +232,7 @@ class TestCifData(AiidaTestCase):
             f.flush()
             a.set_file(f.name)
 
-        self.assertEquals(a.values['test']['_cell_length_a'], '11(1)')
+        self.assertEquals(a.values['test']['_cell_length_a'], ['11(1)'])
 
     @unittest.skipIf(not has_ase(), "Unable to import ase")
     @unittest.skipIf(not has_pycifrw(), "Unable to import PyCifRW")
