@@ -299,7 +299,7 @@ def refine_inline(node):
 
     # Remove all existing symmetry tags before overwriting:
     for tag in symmetry_tags:
-        cif.values[name].RemoveCifItem(tag)
+        cif.values[name].pop(tag.lower(),None)
 
     cif.values[name]['_symmetry_space_group_name_H-M'] = symmetry['hm']
     cif.values[name]['_symmetry_space_group_name_Hall'] = symmetry['hall']
