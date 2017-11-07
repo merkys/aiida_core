@@ -490,9 +490,10 @@ class CifData(SinglefileData):
             values, _, _ = parse(self.get_file_abs_path())
             self._values = {}
             self._loops = []
-            for dataname in values.keys():
-                self._values[dataname] = values[dataname]['values']
-                self._loops[dataname] = values[dataname]['loops']
+            for dataset in values:
+                dataname = dataset['name']
+                self._values[dataname] = dataset['values']
+                self._loops[dataname] = dataset['loops']
         return self._values
 
     def set_values(self, values):
