@@ -478,16 +478,19 @@ class CifData(SinglefileData):
     @property
     def values(self):
         """
-        PyCifRW structure, representing the CIF datablocks.
+        Data structure, representing the CIF datablocks.
 
-        .. note:: requires PyCifRW module.
+        .. note:: requires pycodcif module.
         """
         if self._values is None:
             try:
-                import CifFile
+                from pycodcif import parse
             except ImportError as e:
-                raise ImportError(str(e) + '. You need to install the PyCifRW package.')
-            self._values = CifFile.ReadCif(self.get_file_abs_path())
+                raise ImportError(str(e) + '. You need to install the pycodcif package.')
+            values, _, _ = parse(self.get_file_abs_path())
+            self._values = {}
+            for dataname in values.keys():
+                self._values[dataname] = values[dataname]['values']
         return self._values
 
     def set_values(self, values):
