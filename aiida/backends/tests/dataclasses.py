@@ -225,7 +225,7 @@ class TestCifData(AiidaTestCase):
             f.flush()
             a = CifData(file=f.name)
 
-        self.assertEquals(a.values['test']['_cell_length_a'], '10(1)')
+        self.assertEquals(a.values['test']['_cell_length_a'], ['10(1)'])
 
         with tempfile.NamedTemporaryFile() as f:
             f.write(file_content_2)
