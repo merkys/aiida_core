@@ -295,7 +295,7 @@ def refine_inline(node):
     refined_atoms, symmetry = ase_refine_cell(original_atoms)
 
     cif = CifData(ase=refined_atoms)
-    cif.values.dictionary[name] = cif.values.dictionary.pop(str(0))
+    cif.values[name] = cif.values.pop(str(0))
 
     # Remove all existing symmetry tags before overwriting:
     for tag in symmetry_tags:
